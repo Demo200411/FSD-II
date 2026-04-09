@@ -11,24 +11,30 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    # ---------------- BACKEND ----------------
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: "3.10"
 
     - name: Install Python Dependencies
-      run: pip install flask pytest pytest-cov
+      working-directory: EXP-16
+      run: pip install -r requirements.txt
 
     - name: Run Backend Tests
+      working-directory: EXP-16
       run: pytest --cov=app
 
+    # ---------------- FRONTEND ----------------
     - name: Setup Node
       uses: actions/setup-node@v4
       with:
         node-version: "18"
 
     - name: Install Node Dependencies
+      working-directory: EXP-16
       run: npm install
 
     - name: Run Frontend Tests
+      working-directory: EXP-16
       run: npm test
