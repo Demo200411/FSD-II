@@ -54,4 +54,4 @@ jobs:
         run: chmod +x node_modules/.bin/vitest
 
       - name: Run tests
-        run: npx vitest run
+        run: node node_modules/vitest/vitest.mjs run
